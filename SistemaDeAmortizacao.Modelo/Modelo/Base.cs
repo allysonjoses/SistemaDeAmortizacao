@@ -1,8 +1,5 @@
-﻿using System;
+﻿using SistemaDeAmortizacao.Modelo.Validacao;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SistemaDeAmortizacao.Modelo.Modelo
 {
@@ -15,22 +12,22 @@ namespace SistemaDeAmortizacao.Modelo.Modelo
         /// <summary>
         //  Valor toral do Emprestimo
         /// </summary>
-        public double ValorEmprestimo { get; private set; }
+        public double Valor { get; private set; }
 
         /// <summary>
         //  Taxa de Juros Anual
         /// </summary>
-        public double TaxaDeJuros { get; private set; }
+        public double Juros { get; private set; }
 
         /// <summary>
         //  Quantidade de parcelas
         /// </summary>
         public int QtdParcelas { get; private set; }
 
-        public Base(double valorEmprestimo, double taxaDeJuros, int qtdParcelas)
+        public Base(double valor, double Juros, int qtdParcelas)
         {
-            this.ValorEmprestimo = valorEmprestimo;
-            this.TaxaDeJuros = taxaDeJuros;
+            this.Valor = valor;
+            this.Juros = Juros;
             this.QtdParcelas = qtdParcelas;
 
             ValidarModelo();
@@ -40,7 +37,9 @@ namespace SistemaDeAmortizacao.Modelo.Modelo
 
         private void ValidarModelo()
         {
-            throw new NotImplementedException();
+            Validar.ElementoMenorQue(Valor, 1, "");
+            Validar.ElementoMenorQue(Juros, 0, "");
+            Validar.ElementoMenorQue(QtdParcelas, 1, "");
         }
     }
 }

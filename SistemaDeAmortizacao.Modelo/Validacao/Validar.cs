@@ -23,5 +23,13 @@ namespace SistemaDeAmortizacao.Modelo.Validacao
             if (object1 < min)
                 throw new InvalidOperationException(message);
         }
+
+        public static void ElementoVazio(string stringValue, string message)
+        {
+            if (stringValue == null || stringValue.Trim().Length == 0)
+            {
+                throw new InvalidOperationException(message);
+            }
+        }
     }
 }

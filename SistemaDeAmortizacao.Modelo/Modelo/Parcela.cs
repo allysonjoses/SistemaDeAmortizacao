@@ -1,4 +1,6 @@
-﻿namespace SistemaDeAmortizacao.Modelo.Modelo
+﻿using SistemaDeAmortizacao.Modelo.Validacao;
+
+namespace SistemaDeAmortizacao.Modelo.Modelo
 {
     /// <summary>
     //  Representa uma parcela de um emprestimo
@@ -44,7 +46,11 @@
 
         private void ValidarModelo()
         {
-            //Validar
+            Validar.ElementoMenorQue(Prestacao, 0, "");
+            Validar.ElementoMenorQue(Juros, 0, "");
+            Validar.ElementoMenorQue(Amortizacao, 0, "");
+            Validar.ElementoMenorQue(Saldo, 0, "");
+            Validar.ElementoVazio(Identificador, "");
         }
     }
 }
