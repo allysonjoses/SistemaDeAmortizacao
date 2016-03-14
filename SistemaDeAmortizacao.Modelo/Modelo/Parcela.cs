@@ -32,25 +32,20 @@ namespace SistemaDeAmortizacao.Modelo.Modelo
         /// </summary>
         public string Identificador { get; private set; }
 
-        public Parcela(double prestacao, double juros,
-            double amortizacao, double saldo, string identificador)
-        {
-            this.Prestacao = prestacao;
-            this.Juros = juros;
-            this.Amortizacao = amortizacao;
-            this.Saldo = saldo;
-            this.Identificador = identificador;
-
-            ValidarModelo();
-        }
-
-        private void ValidarModelo()
+        public Parcela(double Prestacao, double Juros,
+            double Amortizacao, double Saldo, string Identificador)
         {
             Validar.ElementoMenorQue(Prestacao, 0, "");
             Validar.ElementoMenorQue(Juros, 0, "");
             Validar.ElementoMenorQue(Amortizacao, 0, "");
             Validar.ElementoMenorQue(Saldo, 0, "");
             Validar.ElementoVazio(Identificador, "");
+
+            this.Prestacao = Prestacao;
+            this.Juros = Prestacao;
+            this.Amortizacao = Amortizacao;
+            this.Saldo = Saldo;
+            this.Identificador = Identificador;
         }
     }
 }

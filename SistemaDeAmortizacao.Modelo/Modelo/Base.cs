@@ -26,20 +26,15 @@ namespace SistemaDeAmortizacao.Modelo.Modelo
 
         public Base(double valor, double Juros, int qtdParcelas)
         {
-            this.Valor = valor;
-            this.Juros = Juros;
-            this.QtdParcelas = qtdParcelas;
-
-            ValidarModelo();
-        }
-
-        public abstract List<Parcela> GerarEmprestimo();
-
-        private void ValidarModelo()
-        {
             Validar.ElementoMenorQue(Valor, 1, "");
             Validar.ElementoMenorQue(Juros, 0, "");
             Validar.ElementoMenorQue(QtdParcelas, 1, "");
+
+            this.Valor = valor;
+            this.Juros = Juros;
+            this.QtdParcelas = qtdParcelas;
         }
+
+        public abstract List<Parcela> GerarEmprestimo();
     }
 }

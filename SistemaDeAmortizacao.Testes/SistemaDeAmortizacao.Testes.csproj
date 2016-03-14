@@ -45,15 +45,25 @@
     </When>
     <Otherwise>
       <ItemGroup>
-        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework" />
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework">
+          <Private>False</Private>
+        </Reference>
       </ItemGroup>
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Modelo\EmprestimoAmericano.cs" />
+    <Compile Include="Modelo\EmprestimoSAC.cs" />
+    <Compile Include="Modelo\EmprestimoPrice.cs" />
+    <Compile Include="Modelo\Base.cs" />
+    <Compile Include="Modelo\Parcela.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Modelo\" />
+    <ProjectReference Include="..\SistemaDeAmortizacao.Modelo\SistemaDeAmortizacao.Modelo.csproj">
+      <Project>{032DE424-7C26-4E9C-BDC6-60855C6BFE10}</Project>
+      <Name>SistemaDeAmortizacao.Modelo</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
