@@ -6,9 +6,42 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
         xmlns:local="clr-namespace:SistemaDeAmortizacao.UI"
-        mc:Ignorable="d"
-        Title="SISTEMA DE AMORTIZAÇÃO" Height="400" Width="600">
+        mc:Ignorable="d" Title="SISTEMA DE AMORTIZAÇÃO" Height="350" Width="600"
+        ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+
+    <Controls:MetroWindow.GlowBrush>
+        <SolidColorBrush Color="{DynamicResource AccentColor}" />
+    </Controls:MetroWindow.GlowBrush>
+    
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+
+        <GroupBox Header="Configurações" Margin="8,20" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <WrapPanel>
+                <TextBox Margin="0,5" VerticalAlignment="Center"
+                    Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Valor do Empréstimo" Width="165" HorizontalAlignment="Center"/>
+
+                <TextBox Margin="0,5" VerticalAlignment="Center"
+                        Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Taxa de Juros Anual" Width="165" Panel.ZIndex="1"/>
+
+                <TextBox Margin="0,5" VerticalAlignment="Center"
+                        Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Quantidade de Parcelas" Width="165" Panel.ZIndex="2"/>
+
+                <Label> Sistema de Amortização </Label>
+                <ComboBox Width="165" Panel.ZIndex="4" Controls:ComboBoxHelper.CharacterCasing="Upper" SelectedIndex="0" Margin="0,0,0,5">
+                    <ComboBoxItem Content="SAC"/>
+                    <ComboBoxItem Content="Price"/>
+                    <ComboBoxItem Content="Americano"/>
+                </ComboBox>
+
+                <Button Content="Gerar Empréstimo" Width="165" Height="40" Margin="0,5" BorderBrush="#FFD8D8D8" IsDefault="True" Cursor="Hand" BorderThickness="0" Background="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" FontSize="13.333"></Button>
+
+            </WrapPanel>
+        </GroupBox>
+
     </Grid>
 </Controls:MetroWindow>
