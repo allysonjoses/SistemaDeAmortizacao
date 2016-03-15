@@ -4,12 +4,15 @@ using SistemaDeAmortizacao.Modelo.Modelo;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 using System;
+using SistemaDeAmortizacao.Utilitarios.Tools;
 
 namespace SistemaDeAmortizacao.UI.ViewModel
 {
     public class MainWindowsViewModel : ViewModelBase
     {
         public ICommand GerarEmprestimoCommand { get; set; }
+
+        public ICommand SalvarEmprestimoCommand { get; set; }
 
         #region prop
 
@@ -71,7 +74,9 @@ namespace SistemaDeAmortizacao.UI.ViewModel
         public MainWindowsViewModel(MainWindow mainWindow)
         {
             this.mainWindow = mainWindow;
+
             GerarEmprestimoCommand = new RelayCommand(GerarEmprestimo);
+            SalvarEmprestimoCommand = new RelayCommand(SalvarEmprestimo);
 
             SistemaDeAmortizacao = new ObservableCollection<EmprestimoBase>();
 
@@ -101,6 +106,18 @@ namespace SistemaDeAmortizacao.UI.ViewModel
             catch (Exception ex)
             {
                await mainWindow.ShowMessageAsync("Não foi possível gerar o emprestimo!", ex.Message);
+            }
+        }
+
+        private async void SalvarEmprestimo()
+        {
+            try
+            {
+                PDF.ExportToPdf(EmprestimoParcelas, Tipo, @"D:\Test.pdf");
+            }
+            catch (Exception ex)
+            {
+                await mainWindow.ShowMessageAsync("Não foi possível salvar o emprestimo!", ex.Message);
             }
         }
 

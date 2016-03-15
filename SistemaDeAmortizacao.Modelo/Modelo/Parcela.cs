@@ -35,11 +35,11 @@ namespace SistemaDeAmortizacao.Modelo.Modelo
         public Parcela(double Prestacao, double Juros,
             double Amortizacao, double Saldo, string Identificador)
         {
-            Validar.ElementoMenorQue(Prestacao, 0, "");
-            Validar.ElementoMenorQue(Juros, 0, "");
-            Validar.ElementoMenorQue(Amortizacao, 0, "");
-            Validar.ElementoMenorQue(Saldo, 0, "");
-            Validar.ElementoVazio(Identificador, "");
+            Validar.ElementoMenorQue(Prestacao, 0, "O valor da prestação não pode ser menor que 0");
+            Validar.ElementoMenorQue(Juros, 0, "O valor do juros não pode ser menor que 0");
+            Validar.ElementoMenorQue(Amortizacao, 0, "O valor da amortização não pode ser menor que 0");
+            Validar.ElementoMenorQue(Saldo, 0, "O valor do saldo não pode ser menor que 0");
+            Validar.ElementoVazio(Identificador, "O valor do identificador não pode nulo ou vazio");
 
             this.Prestacao = Prestacao;
             this.Juros = Juros;

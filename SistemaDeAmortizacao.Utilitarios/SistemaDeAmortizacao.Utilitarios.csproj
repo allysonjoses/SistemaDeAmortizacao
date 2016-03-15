@@ -53,6 +53,12 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SistemaDeAmortizacao.Modelo\SistemaDeAmortizacao.Modelo.csproj">
+      <Project>{032de424-7c26-4e9c-bdc6-60855c6bfe10}</Project>
+      <Name>SistemaDeAmortizacao.Modelo</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

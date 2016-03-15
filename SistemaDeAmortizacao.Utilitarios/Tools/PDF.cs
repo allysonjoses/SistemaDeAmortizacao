@@ -1,69 +1,56 @@
 ﻿using iTextSharp.text;
 using iTextSharp.text.pdf;
-using iTextSharp.text.html;
-using System.Collections;
-using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
-using System.Windows;
-using System.Windows.Media;
+using SistemaDeAmortizacao.Modelo.Modelo;
+using System;
+using System.Collections.ObjectModel;
 
 namespace SistemaDeAmortizacao.Utilitarios.Tools
 {
-    public class PDF
+    public static class PDF
     {
-
-        private static void ExportToPdf(DataGrid grid, string name)
+        public static void ExportToPdf(ObservableCollection<Parcela> list, string sistemaDeAmortizacao, string savename)
         {
-            PdfPTable table = new PdfPTable(grid.Columns.Count);
+            if (list == null) throw new InvalidOperationException("Por favor, gere primeiro o empréstimo antes de salva-lo");
+
+            PdfPTable table = new PdfPTable(5);
+
+            table.TotalWidth = 530f;
+            table.LockedWidth = true;
+            float[] widths = new float[] { 50f, 120, 120, 120, 120f};
+            table.SetWidths(widths);
+            table.HorizontalAlignment = 0;
+            table.SpacingBefore = 20f;
+            table.SpacingAfter = 30f;
+
             Document doc = new Document(iTextSharp.text.PageSize.LETTER, 10, 10, 42, 35);
-            PdfWriter writer = PdfWriter.GetInstance(doc, new System.IO.FileStream(name, System.IO.FileMode.Create));
+            PdfWriter writer = PdfWriter.GetInstance(doc, new System.IO.FileStream(savename, System.IO.FileMode.Create));
+
             doc.Open();
-            for (int j = 0; j < grid.Columns.Count; j++)
-            {
-                table.AddCell(new Phrase(grid.Columns[j].Header.ToString()));
-            }
+
+            PdfPCell cell = new PdfPCell(new Phrase(sistemaDeAmortizacao));
+            cell.Colspan = 5;
+            cell.HorizontalAlignment = 1; //0=Left, 1=Centre, 2=Right
+            table.AddCell(cell);
+
+            table.AddCell("");
+            table.AddCell("Prestação(R$)");
+            table.AddCell("Juros(R$)");
+            table.AddCell("Amortização(R$)");
+            table.AddCell("Saldo Devedor(R$)");
+
             table.HeaderRows = 1;
-            IEnumerable itemsSource = grid.ItemsSource as IEnumerable;
-            if (itemsSource != null)
-            {
-                foreach (var item in itemsSource)
-                {
-                    DataGridRow row = grid.ItemContainerGenerator.ContainerFromItem(item) as DataGridRow;
-                    if (row != null)
-                    {
-                        DataGridCellsPresenter presenter = FindVisualChild<DataGridCellsPresenter>(row);
-                        for (int i = 0; i < grid.Columns.Count; ++i)
-                        {
-                            DataGridCell cell = (DataGridCell)presenter.ItemContainerGenerator.ContainerFromIndex(i);
-                            TextBlock txt = cell.Content as TextBlock;
-                            if (txt != null)
-                            {
-                                table.AddCell(new Phrase(txt.Text));
-                            }
-                        }
-                    }
-                }
 
-                doc.Add(table);
-                doc.Close();
-            }
-        }
-
-        private static T FindVisualChild<T>(DependencyObject obj) where T : DependencyObject
-        {
-            for (int i = 0; i < VisualTreeHelper.GetChildrenCount(obj); i++)
+            foreach (var item in list)
             {
-                DependencyObject child = VisualTreeHelper.GetChild(obj, i);
-                if (child != null && child is T)
-                    return (T)child;
-                else
-                {
-                    T childOfChild = FindVisualChild<T>(child);
-                    if (childOfChild != null)
-                        return childOfChild;
-                }
+                table.AddCell(new Phrase(item.Identificador));
+                table.AddCell(new Phrase(item.Prestacao.ToString()));
+                table.AddCell(new Phrase(item.Juros.ToString()));
+                table.AddCell(new Phrase(item.Amortizacao.ToString()));
+                table.AddCell(new Phrase(item.Saldo.ToString()));
             }
-            return null;
+
+            doc.Add(table);
+            doc.Close();
         }
     }
 }

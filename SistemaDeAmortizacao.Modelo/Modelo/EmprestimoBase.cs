@@ -26,9 +26,9 @@ namespace SistemaDeAmortizacao.Modelo.Modelo
 
         public void SetValues(double Valor, double Juros, int QtdParcelas)
         {
-            Validar.ElementoMenorQue(Valor, 1, "");
-            Validar.ElementoMenorQue(Juros, 0, "");
-            Validar.ElementoMenorQue(QtdParcelas, 1, "");
+            Validar.ElementoMenorQue(Valor, 1, "O valor do empréstimo não pode ser menor que 1");
+            Validar.ElementoMenorQue(Juros, 0, "O valor do juros não pode ser menor que 0");
+            Validar.ElementoMenorQue(QtdParcelas, 1, "A quantidade de parcelas não pode ser menor que 1");
 
             this.Valor = Valor;
             this.Juros = Juros;

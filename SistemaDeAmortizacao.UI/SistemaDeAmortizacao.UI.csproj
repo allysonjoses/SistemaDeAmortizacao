@@ -140,6 +140,10 @@
       <Project>{032de424-7c26-4e9c-bdc6-60855c6bfe10}</Project>
       <Name>SistemaDeAmortizacao.Modelo</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SistemaDeAmortizacao.Utilitarios\SistemaDeAmortizacao.Utilitarios.csproj">
+      <Project>{7c2e502c-5f02-4d6c-a2a2-ce06c78251a1}</Project>
+      <Name>SistemaDeAmortizacao.Utilitarios</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
