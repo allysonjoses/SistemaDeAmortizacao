@@ -6,13 +6,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
         xmlns:local="clr-namespace:SistemaDeAmortizacao.UI"
-        mc:Ignorable="d" Title="SISTEMA DE AMORTIZAÇÃO" Height="350" Width="600"
+        mc:Ignorable="d" Title="SISTEMA DE AMORTIZAÇÃO" Height="400" Width="740"
         ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
 
     <Controls:MetroWindow.GlowBrush>
         <SolidColorBrush Color="{DynamicResource AccentColor}" />
     </Controls:MetroWindow.GlowBrush>
-    
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"/>
@@ -20,27 +20,48 @@
         </Grid.ColumnDefinitions>
 
 
-        <GroupBox Header="Configurações" Margin="8,20" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <GroupBox Header="Configurações" Margin="8,20" HorizontalAlignment="Center" VerticalAlignment="Center" Height="320">
             <WrapPanel>
-                <TextBox Margin="0,5" VerticalAlignment="Center"
+                <Label>Valor do Empréstimo</Label>
+                <TextBox Margin="0,0,0,5" VerticalAlignment="Center" Text="{Binding Valor}"
                     Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Valor do Empréstimo" Width="165" HorizontalAlignment="Center"/>
 
-                <TextBox Margin="0,5" VerticalAlignment="Center"
+                <Label>Taxa de Juros Anual</Label>
+                <TextBox  Margin="0,0,0,5" VerticalAlignment="Center" Text="{Binding Juros}"
                         Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Taxa de Juros Anual" Width="165" Panel.ZIndex="1"/>
 
-                <TextBox Margin="0,5" VerticalAlignment="Center"
+                <Label>Quantidade de Parcelas</Label>
+                <TextBox  Margin="0,0,0,5" VerticalAlignment="Center" Text="{Binding Parcelas, Mode=TwoWay, ValidatesOnExceptions=true, NotifyOnValidationError=true, ValidatesOnDataErrors=True}"
                         Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Quantidade de Parcelas" Width="165" Panel.ZIndex="2"/>
 
-                <Label> Sistema de Amortização </Label>
-                <ComboBox Width="165" Panel.ZIndex="4" Controls:ComboBoxHelper.CharacterCasing="Upper" SelectedIndex="0" Margin="0,0,0,5">
-                    <ComboBoxItem Content="SAC"/>
-                    <ComboBoxItem Content="Price"/>
-                    <ComboBoxItem Content="Americano"/>
-                </ComboBox>
+                <Label>Sistema de Amortização</Label>
+                <ComboBox ItemsSource="{Binding SistemaDeAmortizacao}" SelectedItem="{Binding SistemaDeAmortizacaoSelecionado}"
+                          Width="165" Panel.ZIndex="4" Controls:ComboBoxHelper.CharacterCasing="Upper" SelectedIndex="1" Margin="0,0,0,5"/>
 
-                <Button Content="Gerar Empréstimo" Width="165" Height="40" Margin="0,5" BorderBrush="#FFD8D8D8" IsDefault="True" Cursor="Hand" BorderThickness="0" Background="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" FontSize="13.333"></Button>
+                <Button Content="Gerar Empréstimo" Width="165" Height="40" Margin="0,5" BorderBrush="#FFD8D8D8" IsDefault="True" Cursor="Hand" BorderThickness="0"
+                        Command="{Binding GerarEmprestimoCommand}" FontSize="13" Background="#FFbdc3c7" Foreground="#FF34495e"/>
 
             </WrapPanel>
+        </GroupBox>
+
+        <GroupBox Grid.Column="1" Height="320" Margin="8,20" Header="{Binding Tipo}">
+            <Grid>
+
+                <DataGrid ItemsSource="{Binding Path=EmprestimoParcelas, UpdateSourceTrigger=PropertyChanged}"
+                          AutoGenerateColumns="False" CanUserResizeColumns="True"  Margin="0,0,0,40" 
+                          Style="{StaticResource AzureDataGrid}" FontWeight="Bold">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="      " Binding="{Binding Path=Identificador}"/>
+                        <DataGridTextColumn Header="Prestação(R$)" Binding="{Binding Path=Prestacao}"/>
+                        <DataGridTextColumn Header="Juros(R$)" Binding="{Binding Path=Juros}"/>
+                        <DataGridTextColumn Header="Amortização(R$)" Binding="{Binding Path=Amortizacao}"/>
+                        <DataGridTextColumn Header="Saldo devedor(R$)" Binding="{Binding Path=Saldo}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+
+                <Button Content="Salvar Empréstimo" Height="30" Margin="0,5" BorderBrush="#FFD8D8D8" Cursor="Hand" BorderThickness="0"
+                        Command="{Binding GerarEmprestimoCommand}" FontSize="13" Background="#FFbdc3c7" Foreground="#FF34495e" VerticalAlignment="Bottom"/>
+            </Grid>
         </GroupBox>
 
     </Grid>

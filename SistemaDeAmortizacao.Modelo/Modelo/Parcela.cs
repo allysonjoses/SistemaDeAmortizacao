@@ -42,7 +42,7 @@ namespace SistemaDeAmortizacao.Modelo.Modelo
             Validar.ElementoVazio(Identificador, "");
 
             this.Prestacao = Prestacao;
-            this.Juros = Prestacao;
+            this.Juros = Juros;
             this.Amortizacao = Amortizacao;
             this.Saldo = Saldo;
             this.Identificador = Identificador;

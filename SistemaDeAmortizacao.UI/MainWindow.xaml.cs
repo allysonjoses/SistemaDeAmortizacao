@@ -1,4 +1,6 @@
 ﻿using MahApps.Metro.Controls;
+using SistemaDeAmortizacao.UI.ViewModel;
+using MahApps.Metro.Controls.Dialogs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,9 +23,14 @@ namespace SistemaDeAmortizacao.UI
     /// </summary>
     public partial class MainWindow : MetroWindow
     {
+        MainWindowsViewModel viewModel;
+
         public MainWindow()
         {
             InitializeComponent();
+
+            viewModel = new MainWindowsViewModel(this);
+            this.DataContext = viewModel;
         }
     }
 }

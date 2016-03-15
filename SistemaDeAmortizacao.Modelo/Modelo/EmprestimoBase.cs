@@ -7,7 +7,7 @@ namespace SistemaDeAmortizacao.Modelo.Modelo
     /// Classe base para os 3 tipos de emprestimos
     /// de amortização (SAC, Price, Americano)
     /// </summary>
-    public abstract class Base
+    public abstract class EmprestimoBase
     {
         /// <summary>
         //  Valor toral do Emprestimo
@@ -24,15 +24,15 @@ namespace SistemaDeAmortizacao.Modelo.Modelo
         /// </summary>
         public int QtdParcelas { get; private set; }
 
-        public Base(double valor, double Juros, int qtdParcelas)
+        public void SetValues(double Valor, double Juros, int QtdParcelas)
         {
             Validar.ElementoMenorQue(Valor, 1, "");
             Validar.ElementoMenorQue(Juros, 0, "");
             Validar.ElementoMenorQue(QtdParcelas, 1, "");
 
-            this.Valor = valor;
+            this.Valor = Valor;
             this.Juros = Juros;
-            this.QtdParcelas = qtdParcelas;
+            this.QtdParcelas = QtdParcelas;
         }
 
         public abstract List<Parcela> GerarEmprestimo();

@@ -41,7 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Modelo\Base.cs" />
+    <Compile Include="Modelo\EmprestimoBase.cs" />
     <Compile Include="Modelo\EmprestimoAmericano.cs" />
     <Compile Include="Modelo\EmprestimoPrice.cs" />
     <Compile Include="Modelo\EmprestimoSAC.cs" />

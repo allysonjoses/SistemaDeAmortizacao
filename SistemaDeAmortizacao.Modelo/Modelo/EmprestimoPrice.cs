@@ -1,16 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SistemaDeAmortizacao.Modelo.Modelo
 {
-    public class EmprestimoPrice : Base
+    public class EmprestimoPrice : EmprestimoBase
     {
-        public EmprestimoPrice(double valorEmprestimo, double taxaDeJuros, int qtdParcelas) :
-            base(valorEmprestimo, taxaDeJuros, qtdParcelas)
-        { }
+        public EmprestimoPrice()
+        {
+
+        }
 
         /// <summary>
         //  Realiza os calculos para geração do emprestimo Price
@@ -19,6 +17,11 @@ namespace SistemaDeAmortizacao.Modelo.Modelo
         public override List<Parcela> GerarEmprestimo()
         {
             throw new NotImplementedException();
+        }
+
+        public override string ToString()
+        {
+            return "Price";
         }
     }
 }
