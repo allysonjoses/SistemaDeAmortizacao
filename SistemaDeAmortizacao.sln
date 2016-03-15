@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SistemaDeAmortizacao.Modelo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SistemaDeAmortizacao.UI", "SistemaDeAmortizacao.UI\SistemaDeAmortizacao.UI.csproj", "{845D0423-1AF3-4B60-8C61-AF98332980C6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SistemaDeAmortizacao.Utilitarios", "SistemaDeAmortizacao.Utilitarios\SistemaDeAmortizacao.Utilitarios.csproj", "{8714A66E-EB47-4104-B119-4B9E4FC39FE3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{845D0423-1AF3-4B60-8C61-AF98332980C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{845D0423-1AF3-4B60-8C61-AF98332980C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{845D0423-1AF3-4B60-8C61-AF98332980C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8714A66E-EB47-4104-B119-4B9E4FC39FE3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8714A66E-EB47-4104-B119-4B9E4FC39FE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8714A66E-EB47-4104-B119-4B9E4FC39FE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8714A66E-EB47-4104-B119-4B9E4FC39FE3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
