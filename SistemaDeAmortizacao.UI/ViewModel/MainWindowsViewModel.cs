@@ -1,10 +1,9 @@
-﻿using MahApps.Metro.Controls.Dialogs;
+﻿using GalaSoft.MvvmLight.CommandWpf;
+using MahApps.Metro.Controls.Dialogs;
+using SistemaDeAmortizacao.Modelo.Modelo;
 using System.Collections.ObjectModel;
-using GalaSoft.MvvmLight.CommandWpf;
 using System.Windows.Input;
 using System;
-using SistemaDeAmortizacao.Modelo.Modelo;
-using System.Collections.Generic;
 
 namespace SistemaDeAmortizacao.UI.ViewModel
 {
